@@ -1,0 +1,62 @@
+<body style="margin:0px;">
+
+    <div class="container" style=" padding: 20px; background: #f1f1f1; width: 100%; ">
+        <div style="text-align: center;">
+             <img src="https://highyut.online/logo.png" width="100%"> 
+        <h1 style="font-family: 'Poppin', sans-serif; font-weight: 800; color: linear-gradient(-45deg, #1391a5, #274685); color: #2d71a1; ">XerenCopyTrading</h1>
+        </div>
+        
+        <div class="content" style="padding-left: 20px; padding-right: 20px; background: #fff;">
+            <div class="header" style="text-align: center;">
+               
+                <h2 style="font-family: 'Poppins', sans-serif; font-weight: 600;  padding-top: 20px;">Connect To Get Started</h2>
+            </div>
+    
+        <div>
+    
+            <p style="font-weight: 600; font-size:20px; color: #000;">Welcome, {{ user.username }}, </p>
+    
+    
+            <p style="cursor: auto;color: #000; font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-size: 16px;line-height: 24px;text-align: left;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px"> 
+            You're only one step away from completing your account registration and enabling your copy trades.
+            </p>
+    
+            <p style="cursor: auto;color: #000;font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-size: 16px;line-height: 24px;text-align: left;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px"> 
+            The emaill address we have on file is "{{user.email}}" 
+            </p>
+    
+            <p style="cursor: auto;color: #000;font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-size: 16px;line-height: 24px;text-align: left;margin-block-start: 1em;margin-block-end: 1em;margin-inline-start: 0px;margin-inline-end: 0px">
+            Please connect your exchange and activate your account
+            </P>
+    
+        </div>
+    
+    
+            <div style="text-align: center; padding: 20px; padding-top: 30px; padding-bottom: 30px;">
+    
+            <a style="text-decoration: none; background-color: #2d71a1; color: white; border-radius: 5px; padding: 15px 30px !important; background: linear-gradient(-45deg, #1391a5, #274685); " href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}" >CONNECT</a>
+            </div>
+            
+            <div style="padding: 5px;">
+                <hr>
+            </div>
+    
+            <div style="text-align:center; padding-bottom: 10px; cursor: auto; color: #747F8D;font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif; font-size: 13px; line-height: 16px; text-align: left; padding: 10px;">
+                <p>
+                Need help? Contact our support team or hit us up on Twitter @discord.<br>
+                Want to give us feedback? Let us know what you think on our feedback site. 
+                </p>
+                
+            </div>
+        </div>
+    
+    
+        <div class="footer" style="color: #99AAB5; font-family: Whitney, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;font-size: 12px; line-height: 24px; text-align: center;">
+            <div style="padding: 20px;">
+            Sent by XerenCopyTrading • @Xerencopytrading
+            </div>
+        </div>
+    
+    </div>
+    
+    </body>    

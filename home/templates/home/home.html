@@ -1,0 +1,407 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+
+  <!-- ======= Hero Section ======= -->
+  <section class="hero-section" id="hero">
+
+    <div class="wave">
+
+      <svg width="100%" height="355px" viewBox="0 0 1920 355" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FFFFFF">
+            <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,757 L1017.15166,757 L0,757 L0,439.134243 Z" id="Path"></path>
+          </g>
+        </g>
+      </svg>
+
+    </div>
+
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 hero-text-image">
+          <div class="row">
+            <div class="col-lg-8 text-center text-lg-start">
+              <h1 data-aos="fade-right">Xeren Copy Trading</h1>
+              <p class="mb-5" data-aos="fade-right" data-aos-delay="100">Start investing in cryptocurrencies together with professional traders and benefit from their experience. Start growing your crypto investment on autopilot with full transparency and control on Xeren Copy Trading platform.</p>
+              <p data-aos="fade-right" data-aos-delay="200" data-aos-offset="-500"><a href="{% url 'register' %}" class="btn btn-outline-white">SIGN UP</a></p>
+            </div>
+            <div class="col-lg-4 iphone-wrap">
+              <img src="{% static 'assets/img/phone_1.png' %}" alt="Image" class="phone-1" data-aos="fade-right">
+              <img src="{% static 'assets/img/phone_2.png' %}" alt="Image" class="phone-2" data-aos="fade-right" data-aos-delay="200">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section><!-- End Hero -->
+
+  <!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget"></div>
+  <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/" rel="noopener" target="_blank"><span class="blue-text">Markets</span></a> by TradingView</div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+  {
+  "symbols": [
+    {
+      "proName": "BITSTAMP:ETHUSD",
+      "title": "Ethereum"
+    },
+    {
+      "description": "Bitcoin",
+      "proName": "BINANCE:BTCUSDT"
+    },
+    {
+      "description": "Link",
+      "proName": "BYBIT:LINKUSDT"
+    },
+    {
+      "description": "Cardano",
+      "proName": "BINANCE:ADAUSDT"
+    },
+    {
+      "description": "Binance",
+      "proName": "BINANCE:BNBUSDT"
+    },
+    {
+      "description": "Shiba",
+      "proName": "BINANCE:SHIBUSDT"
+    }
+  ],
+  "showSymbolLogo": false,
+  "colorTheme": "dark",
+  "isTransparent": true,
+  "displayMode": "adaptive",
+  "locale": "en"
+}
+  </script>
+</div>
+<!-- TradingView Widget END -->
+<div style="padding-top: 20px;"></div>
+
+<br>
+<br>
+<br>
+
+<div class="row justify-content-center text-center mb-5" >
+  <div class="col-md-5" data-aos="fade-up">
+    <h2 class="section-heading">Top Traders</h2>
+  </div>
+</div>
+
+<main id="main" class="page-content">
+ 
+  {% for trade in trader %}
+  
+  <div class="card">
+
+    <div class="banner" style="background-image:url({{trade.cover_photo.url}});">
+
+      <img src="{{trade.profile_pic.url}}" class="image--cover" />
+      
+    </div>
+    
+    <div class="menu">
+      <div class="opener"></div>
+    </div>
+    <h2 class="name">{{trade.tradername}}</h2>
+    <div class="title">{{trade.followers}} Follower(s) 
+      <span style="color: #24ae64;"><i class="bi bi-caret-up-fill"></i>{{trade.uppercent}}%</span>
+    </div>
+    <div class="actions">
+      <div class="follow-info">
+          <div style="display: flex; align-items: center;">
+          <span style="display: inline-block; font-weight: 700; font-size:32px; line-height:40px; color: #24ae64;">{{trade.profit}}%
+            <img class="profit-graph" src="{{trade.profit_graph.url}}" style="margin-left: 60px;">
+          </span> 
+        </div>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <span>ROI</span><span class="smallicon">{{trade.roi}}D</span><span class="greenper" style="margin-left: 205px;">{{trade.roiprofit}}%</span>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <span>drawdowns</span><span class="smallicon">{{trade.drawdown}}D</span><span class="" style="margin-left: 150px;">{{trade.drawdown_percent}}%</span>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <span>aum</span><span class="smallicon">{{trade.aum}}D</span><span class="" style="margin-left: 200px;">{{trade.aum_percent}}</span>
+      </div>
+
+      <br>
+        
+      <div class="hot" style="text-align: center;">
+      <p><a href="{% url 'register' %}" class="btn btn-primary">Connect</a></p>
+    </div>
+    </div> 
+  </div>
+  
+  {% endfor %}
+</main>
+
+<br>
+<br>
+<br>
+
+<!-- ======= Clients Section ======= -->
+<section class="section" style="background-color:#f2f2f2;">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4 me-auto">
+        <h2 class="mb-4">Partner with Top Brokers</h2>
+        <p class="mb-4">To kick off your trading journey with us, you will need to connect your exchange.
+          Don't have a Broker? Don't worry! We partner with the most reliable Brokers worldwide, giving you the option to select one that best suits your needs.</p>
+        <p><a href="#" class="btn btn-lg btn-primary">Connect Now</a></p>
+      </div>
+
+      <div class="col-md-6" data-aos="fade-left">
+        <img src="{% static 'assets/img/home_dapps.png' %}" class="dapp" alt="Image" data-aos="fade-right">
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+</section><!-- End Clients Section -->
+
+    <!-- ======= Home Section ======= -->
+    <section class="section">
+      <div class="container">
+
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-md-5" data-aos="fade-up">
+            <h2 class="section-heading">Save your time to using Xerencopytrading</h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="">
+            <div class="feature-1 text-center">
+              <div class="wrap-icon icon-1">
+                <i class="bi bi-currency-bitcoin"></i>
+              </div>
+              <h3 class="mb-3">Easy</h3>
+              <p>This is the easiest way to profit from crypto markets if you do not have time to monitor the markets yourself. Follow professional traders and enjoy the benefits of being in the driver's seat of every trade.</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-1 text-center">
+              <div class="wrap-icon icon-1">
+                <i class="bi bi-bar-chart"></i>
+              </div>
+              <h3 class="mb-3">Transparent</h3>
+              <p>All traders have fully transparent trade records. You can analyse all the trades, statistics and metrics of every trader that is available in the marketplace and select the one that is right for your risk/reward appetite.</p>
+            </div>
+          </div>
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-1 text-center">
+              <div class="wrap-icon icon-1">
+                <i class="bi bi-patch-check"></i>
+              </div>
+              <h3 class="mb-3">Safe</h3>
+              <p>All the trading activity happens through API, which allows the trader to execute the trades without the option of withdrawing any funds.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div style="margin-right: 50px; margin-left: 50px;">
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+      <div class="tradingview-widget-container__widget"></div>
+      <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/markets/cryptocurrencies/prices-all/" rel="noopener" target="_blank"><span class="blue-text">Cryptocurrency Markets</span></a> by TradingView</div>
+      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+      {
+      "width": "100%",
+      "height": "490",
+      "defaultColumn": "overview",
+      "screener_type": "crypto_mkt",
+      "displayCurrency": "BTC",
+      "colorTheme": "dark",
+      "locale": "en",
+      "isTransparent": false
+      }
+      </script>
+      </div>
+      <!-- TradingView Widget END -->
+    </div>
+    <section class="section">
+
+      <div class="container">
+        <div class="row justify-content-center text-center mb-5" data-aos="fade">
+          <div class="col-md-6 mb-5">
+            <img src="{% static 'assets/img/undraw_svg_1.svg' %}" alt="Image" class="img-fluid">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="step">
+              <span class="number">01</span>
+              <h3>Sign Up</h3>
+              <p>Create your copy trading account with xerencopytrading.com</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="step">
+              <span class="number">02</span>
+              <h3>Connect Exchange</h3>
+              <p>An activation link would be sent to your email for verfication. Verify and connect wallet</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="step">
+              <span class="number">03</span>
+              <h3>Enjoy Profit</h3>
+              <p>Follow a trader and enjoy maximum profit from copying trades.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-4 me-auto">
+            <h2 class="mb-4">What is copy trading?</h2>
+            <p class="mb-4">Copy-trading (aka mirror trading and shadow trading) is a great tool for cryptocurrency investors who would like to grow their cryptocurrency portfolio on autopilot. Copy trading crypto is very dynamic. Our advanced copy trading system will copy and execute the trades of the professional traders that you follow automatically.</p>
+            <p><a href="{% url 'register' %}" class="btn btn-primary">Connect</a></p>
+          </div>
+          <div class="col-md-6" data-aos="fade-left">
+            <img src="{% static 'assets/img/undraw_svg_2.svg' %}" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-4 ms-auto order-2">
+            <h2 class="mb-4">How does copy trading work?</h2>
+            <p class="mb-4">Once a Trader creates an order in his account at Xerencopytrading, our copy trading platform will copy that trade and it will be replicated on your account automatically. In other words, Traders create signals that are then sent to copy-trading.
+
+            Apart from the main copy-trading function, Copy-Traders have a number of options that adds flexibility and more control over the process of copy-trading. For example, when a Copy-Trader decides to start copying a specific Trader, he can specify the custom size of funds used for copy-trading.</p>
+            <p><a href="{% url 'register' %}" class="btn btn-primary">Connect</a></p>
+          </div>
+          <div class="col-md-6" data-aos="fade-right">
+            <img src="{% static 'assets/img/copy-trading.png' %}" alt="Image" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Testimonials Section ======= -->
+    <section class="section border-top border-bottom">
+      <div class="container">
+        <div class="row justify-content-center text-center mb-5">
+          <div class="col-md-4">
+            <h2 class="section-heading">Review From Our Users</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center text-center">
+          <div class="col-md-7">
+
+            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+              <div class="swiper-wrapper">
+
+                <div class="swiper-slide">
+                  <div class="review text-center">
+                    <p class="stars">
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill muted"></span>
+                    </p>
+                    <h3>Great ROI!</h3>
+                    <blockquote>
+                      <p>I have mixed results. When I copy trades on demo everything is great, but as soon as I switch to a live account, something unexplainable starts to happen – a month in the black, a month in the red. Based on the year’s result, the portfolio brought +110%, which is even less than simply buying an index</p>
+                    </blockquote>
+
+                    <p class="review-user">
+                      <img src="{% static 'assets/img/person_1.jpg' %}" alt="Image" class="img-fluid rounded-circle mb-3">
+                      <span class="d-block">
+                        <span class="text-black">Sefa Devon, 37</span>, &mdash; Engineer
+                      </span>
+                    </p>
+
+                  </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                  <div class="review text-center">
+                    <p class="stars">
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill muted"></span>
+                    </p>
+                    <h3>Easy Money!</h3>
+                    <blockquote>
+                      <p>Copy trading on Xerencopytrading is really cool. When I first started to select traders to copy five months ago, I was a bit shocked. There are dozens of thousands of them there. Naturally, the majority have mediocre results, but there are also real stars. I selected six managers, but stopped working with one of them after two months due to weak results. Overall, I am happy with everything.</p>
+                    </blockquote>
+
+                    <p class="review-user">
+                      <img src="{% static 'assets/img/person_2.jpg' %}" alt="Image" class="img-fluid rounded-circle mb-3">
+                      <span class="d-block">
+                        <span class="text-black">Lindsay Finley, 28</span>, &mdash; Beginner Investor
+                      </span>
+                    </p>
+
+                  </div>
+                </div><!-- End testimonial item -->
+
+                <div class="swiper-slide">
+                  <div class="review text-center">
+                    <p class="stars">
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill"></span>
+                      <span class="bi bi-star-fill muted"></span>
+                    </p>
+                    <h3>Awesome functionality!</h3>
+                    <blockquote>
+                      <p>I’ve been copying trades on Xerencopytrading since 2020, which on average brings me 150-300% annual return. I choose the traders with conservative strategies that I understand and low drawdowns. Of course, if you want a lot of money, you will have to take a risk, but then, don’t complain that your capital is all spent on the broker’s commissions!</p>
+                    </blockquote>
+
+                    <p class="review-user">
+                      <img src="{% static 'assets/img/person_3.jpg' %}" alt="Image" class="img-fluid rounded-circle mb-3">
+                      <span class="d-block">
+                        <span class="text-black">Garnet Puck, 25</span>, &mdash; Student
+                      </span>
+                    </p>
+
+                  </div>
+                </div><!-- End testimonial item -->
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Testimonials Section -->
+
+    <!-- ======= CTA Section ======= -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6 me-auto text-center text-md-start mb-5 mb-md-0">
+            <h2>Start copy trading with Xerencopytrading</h2>
+          </div>
+          <div class="col-md-5 text-center text-md-end">
+            <p><a href="{% url 'register' %}" class="btn d-inline-flex align-items-center"><i class="bi bi-currency-bitcoin"></i><span>Connect Wallet</span></a></p>
+          </div>
+        </div>
+      </div>
+    </section><!-- End CTA Section -->
+
+  </main><!-- End #main -->
+
+{% endblock content %}
